@@ -113,12 +113,6 @@ function renderizarDetalleProducto(producto) {
                 <span class="product-category">${producto.categoria}</span>
                 <div class="product-title-row">
                     <h1>${producto.nombre}</h1>
-                    <button class="btn-favorito ${esFavorito(producto.id) ? 'active' : ''}" 
-                            onclick="toggleFavorito(${producto.id})" 
-                            aria-label="Agregar a favoritos"
-                            id="btnFavorito">
-                        <i class="${esFavorito(producto.id) ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
-                    </button>
                 </div>
                 
                 <p class="product-stock ${stockClass}">${stockText}</p>
@@ -662,64 +656,6 @@ function mostrarNotificacion(mensaje) {
     }, 2000);
 }
 
-// ===== FAVORITOS =====
-
-// Obtener favoritos desde localStorage
-function obtenerFavoritos() {
-    return JSON.parse(localStorage.getItem('favorites')) || [];
-}
-
-// Verificar si un producto es favorito
-function esFavorito(id) {
-    const favoritos = obtenerFavoritos();
-    return favoritos.includes(id);
-}
-
-// Agregar o quitar de favoritos
-function toggleFavorito(id) {
-    let favoritos = obtenerFavoritos();
-    const index = favoritos.indexOf(id);
-    
-    if (index > -1) {
-        favoritos.splice(index, 1);
-        mostrarNotificacion('Eliminado de favoritos');
-    } else {
-        favoritos.push(id);
-        mostrarNotificacion('Agregado a favoritos ♥');
-    }
-    
-    localStorage.setItem('favorites', JSON.stringify(favoritos));
-    
-    // Actualizar botón
-    const btn = document.getElementById('btnFavorito');
-    if (btn) {
-        const icon = btn.querySelector('i');
-        if (esFavorito(id)) {
-            btn.classList.add('active');
-            icon.className = 'fa-solid fa-heart';
-        } else {
-            btn.classList.remove('active');
-            icon.className = 'fa-regular fa-heart';
-        }
-    }
-    
-    // Actualizar contador en el nav
-    actualizarContadorFavoritos();
-}
-
-// Actualizar contador de favoritos en el nav
-function actualizarContadorFavoritos() {
-    const favoritos = obtenerFavoritos();
-    const contadores = document.querySelectorAll('.favorites-count');
-    contadores.forEach(contador => {
-        contador.textContent = favoritos.length;
-        if (favoritos.length > 0) {
-            contador.style.display = 'flex';
-        } else {
-            contador.style.display = 'none';
-        }
-    });
-}
 
 // Copiar enlace al portapapeles
 function copiarEnlace() {
