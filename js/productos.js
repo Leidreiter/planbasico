@@ -1,106 +1,82 @@
-// Base de datos de productos con galería de imágenes
-// Generado automáticamente desde Google Sheets
-// Última actualización: 5/4/2026, 12:19:15
+// Base de datos de productos con galer?a de im?genes
+// Generado autom?ticamente desde Google Sheets
+// ?ltima actualizaci?n: 6/4/2026, 01:10:34
 
 const productos = [
     {
         id: 1,
-        nombre: "gorro Dormir",
-        descripcion: "Gorra de categoría 1",
-        descripcionDetallada: "Gorra de categoría 1 - Gorra de categoría 1",
-        precio: 8000,
-        imagen: "https://lh3.googleusercontent.com/d/15_Ck7vyYsDelpxaiFxGy2st71Jkkiy1p",
+        nombre: "Manicura b?sica",
+        descripcion: "Limpieza, corte, limado, tratamiento y esmaltado.",
+        descripcionDetallada: "Limpieza de u?as, corte, limado, tratamiento de cut?culas y esmaltado tradicional. Es el servicio est?ndar de mantenimiento.",
+        precio: 15000,
+        imagen: "https://drive.google.com/uc?export=view&id=1rd4pdOsMxyGYPKelKjmSSNj-Nkpa_aOm",
         galeria: [
-            "https://lh3.googleusercontent.com/d/15_Ck7vyYsDelpxaiFxGy2st71Jkkiy1p",
-            "https://lh3.googleusercontent.com/d/1gUQvREIEWwOhuiuwEer5GQ01KB4rqJwH",
-            "https://lh3.googleusercontent.com/d/10Ycxl2cxTNnLGY_a2p_Ke1oNS8BbiBl4",
-            "https://lh3.googleusercontent.com/d/1B-iX_NIDHe0T_WyYlK3HTSXrU7IFADeS",
-            "https://lh3.googleusercontent.com/d/1zfKFg9iNy8TzzW78qhVgKe1d5RxVjUX8"
+            "https://drive.google.com/uc?export=view&id=1rd4pdOsMxyGYPKelKjmSSNj-Nkpa_aOm"
         ],
-        categoria: "categoria1",
-        stock: 200,
+        categoria: "manicura",
+        stock: NaN,
         caracteristicas: [
-            "alogodón",
-            "industria nacional",
-            "estilizada",
-            "personalizable"
+            "servicio profesional",
+            "atenci?n VIP",
+            "cuidado y detalle"
         ]
     },
     {
         id: 2,
-        nombre: "gorro Bruja",
-        descripcion: "Gorra de categoría 1",
-        descripcionDetallada: "Gorra de categoría 1 - Gorra de categoría 1",
-        precio: 8000,
-        imagen: "https://lh3.googleusercontent.com/d/1Ifxs_XTgreF3-NtoZCBCQeua3wC3IJAs",
+        nombre: "Esmaltado semipermanente",
+        descripcion: "Esmalte gel con lampara UV/LED",
+        descripcionDetallada: "Aplicaci?n de esmalte gel que se seca con l?mpara UV/LED y dura entre 2 y 3 semanas sin descascararse.",
+        precio: 22000,
+        imagen: "https://drive.google.com/uc?export=view&id=1clxwr84yA212Ui7NtBMt7IxdkT9J6ab6",
         galeria: [
-            "https://lh3.googleusercontent.com/d/1Ifxs_XTgreF3-NtoZCBCQeua3wC3IJAs",
-            "https://lh3.googleusercontent.com/d/1AwhBVe4RvTTjX3_6ox1lvaALv_QHKhlj",
-            "https://lh3.googleusercontent.com/d/1keQ4cp0wvPWdWALReZlMYnHmOfWDaoeD",
-            "https://lh3.googleusercontent.com/d/1JCq_GaTiV6LWm64taAfEW9FKTsCkYJ1m",
-            "https://lh3.googleusercontent.com/d/17gvQ42huws6rnPYcUuaS4QCJR8N0QmQw"
+            "https://drive.google.com/uc?export=view&id=1clxwr84yA212Ui7NtBMt7IxdkT9J6ab6"
         ],
-        categoria: "categoria1",
-        stock: 200,
+        categoria: "manicura",
+        stock: NaN,
         caracteristicas: [
-            "alogodón",
-            "industria nacional",
-            "estilizada",
-            "personalizable"
+            "servicio profesional",
+            "atenci?n VIP",
+            "cuidado y detalle"
         ]
     },
     {
         id: 3,
-        nombre: "gorro Cumple",
-        descripcion: "Gorra de categoría 1",
-        descripcionDetallada: "Gorra de categoría 1 - Gorra de categoría 1",
-        precio: 8000,
-        imagen: "https://lh3.googleusercontent.com/d/1doHfuSpVkEGbzh1E-Ze6WbT-_rMUPHxv",
+        nombre: "U?as esculpidas (gel o acr?lico)",
+        descripcion: "Extensi?n y modelado de u?as",
+        descripcionDetallada: "Extensi?n y modelado de u?as sobre moldes o tips, ideal para alargar o reforzar u?as naturales.",
+        precio: 28000,
+        imagen: "https://drive.google.com/uc?export=view&id=1jxGJ0M5SLiNBFao-ry_s2IhROtHWbMzN",
         galeria: [
-            "https://lh3.googleusercontent.com/d/1doHfuSpVkEGbzh1E-Ze6WbT-_rMUPHxv",
-            "https://lh3.googleusercontent.com/d/1nwgHA_jGDdKWZ4luL7GYn5hedPmPGELS",
-            "https://lh3.googleusercontent.com/d/1BpRBDU4fwJBOYlvVuW9tduzYKcdV5MHC",
-            "https://lh3.googleusercontent.com/d/1JTkMZR7gln4qLiyK7CPy8TtF3LARXGNa",
-            "https://lh3.googleusercontent.com/d/1ogrhfETHCCftKCzyCnNVUoEddXMynakR"
+            "https://drive.google.com/uc?export=view&id=1jxGJ0M5SLiNBFao-ry_s2IhROtHWbMzN"
         ],
-        categoria: "categoria1",
-        stock: 200,
+        categoria: "manicura",
+        stock: NaN,
         caracteristicas: [
-            "alogodón",
-            "industria nacional",
-            "estilizada",
-            "personalizable"
+            "servicio profesional",
+            "atenci?n VIP",
+            "cuidado y detalle"
         ]
     },
     {
         id: 4,
-        nombre: "gorra Lluvia",
-        descripcion: "Gorra de categoría 1",
-        descripcionDetallada: "Gorra de categoría 1 - Gorra de categoría 1",
-        precio: 8000,
-        imagen: "https://lh3.googleusercontent.com/d/18xYPGb7zN43_J9mwOm5CP2hEQ9EiI8re",
+        nombre: "Nail art (decoraci?n de u?as)",
+        descripcion: "Dise?os personalizados de u?as",
+        descripcionDetallada: "Dise?os personalizados: dibujos, piedras, encapsulados, degradados, efectos (chrome, mate, etc.).",
+        precio: 35000,
+        imagen: "https://drive.google.com/uc?export=view&id=10nFBnN5hWEtLuLzaG_a-e_12MWRhEaM6",
         galeria: [
-            "https://lh3.googleusercontent.com/d/18xYPGb7zN43_J9mwOm5CP2hEQ9EiI8re",
-            "https://lh3.googleusercontent.com/d/1uJGjF0Xvt_cxiwQYrcgxle7jY4KQSN35",
-            "https://lh3.googleusercontent.com/d/18liHkmuHhoHHIA_LdUct4eQ4oovqCL77",
-            "https://lh3.googleusercontent.com/d/1XYGOtgZ6HR77GUEreOefxfGg_QOyuzbC",
-            "https://lh3.googleusercontent.com/d/1G6MNVyz06cncNjxYfsIh7u-SDOE-cksV"
+            "https://drive.google.com/uc?export=view&id=10nFBnN5hWEtLuLzaG_a-e_12MWRhEaM6"
         ],
-        categoria: "categoria1",
-        stock: 200,
+        categoria: "manicura",
+        stock: NaN,
         caracteristicas: [
-            "alogodón",
-            "industria nacional",
-            "estilizada",
-            "personalizable"
+            "servicio profesional",
+            "atenci?n VIP",
+            "cuidado y detalle"
         ]
     }
 ];
 
-
-// ============================================
-// FUNCIONES DEL CLIENTE (Navegador)
-// ============================================
 
 // Renderizar productos
 function renderizarProductos() {
@@ -119,18 +95,18 @@ function renderizarProductos() {
             </a>
             <div class="product-actions">
                 <button class="add-to-cart-btn" onclick="window.location.href='producto.html?id=${producto.id}'" aria-label="Ver detalles de ${producto.nombre}">
-                    Ver servicio
+                    Ver producto
                 </button>
 
                 <button class="add-to-cart-btn" onclick="agregarAlCarrito(${producto.id})" aria-label="Agregar ${producto.nombre} al carrito">
-                    Reservar turno
+                    Agregar al Carrito
                 </button>
             </div>
         </article>
     `).join('');
 }
 
-// Reservar turno
+// Agregar al carrito
 function agregarAlCarrito(id) {
     const producto = productos.find(p => p.id === id);
     if (!producto) return;
@@ -163,7 +139,7 @@ function formatearPrecio(precio) {
     });
 }
 
-// Mostrar notificación
+// Mostrar notificaci?n
 function mostrarNotificacion(mensaje) {
     const notif = document.createElement('div');
     notif.textContent = mensaje;
@@ -188,7 +164,7 @@ function mostrarNotificacion(mensaje) {
     }, 2000);
 }
 
-// Agregar estilos de animación
+// Agregar estilos de animaci?n
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
@@ -214,5 +190,5 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Inicializar al cargar la página
+// Inicializar al cargar la p?gina
 document.addEventListener('DOMContentLoaded', renderizarProductos);
