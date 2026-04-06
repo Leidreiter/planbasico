@@ -1,13 +1,13 @@
-// Base de datos de productos con galer?a de im?genes
-// Generado autom?ticamente desde Google Sheets
-// ?ltima actualizaci?n: 6/4/2026, 01:10:34
+// Base de datos de productos con galería de imágenes
+// Generado automáticamente desde Google Sheets
+// Última actualización: 6/4/2026, 01:52:24
 
 const productos = [
     {
         id: 1,
-        nombre: "Manicura b?sica",
+        nombre: "Manicura básica",
         descripcion: "Limpieza, corte, limado, tratamiento y esmaltado.",
-        descripcionDetallada: "Limpieza de u?as, corte, limado, tratamiento de cut?culas y esmaltado tradicional. Es el servicio est?ndar de mantenimiento.",
+        descripcionDetallada: "Limpieza de uñas, corte, limado, tratamiento de cutículas y esmaltado tradicional. Es el servicio estándar de mantenimiento.",
         precio: 15000,
         imagen: "https://drive.google.com/uc?export=view&id=1rd4pdOsMxyGYPKelKjmSSNj-Nkpa_aOm",
         galeria: [
@@ -17,7 +17,7 @@ const productos = [
         stock: NaN,
         caracteristicas: [
             "servicio profesional",
-            "atenci?n VIP",
+            "atención VIP",
             "cuidado y detalle"
         ]
     },
@@ -25,7 +25,7 @@ const productos = [
         id: 2,
         nombre: "Esmaltado semipermanente",
         descripcion: "Esmalte gel con lampara UV/LED",
-        descripcionDetallada: "Aplicaci?n de esmalte gel que se seca con l?mpara UV/LED y dura entre 2 y 3 semanas sin descascararse.",
+        descripcionDetallada: "Aplicación de esmalte gel que se seca con lámpara UV/LED y dura entre 2 y 3 semanas sin descascararse.",
         precio: 22000,
         imagen: "https://drive.google.com/uc?export=view&id=1clxwr84yA212Ui7NtBMt7IxdkT9J6ab6",
         galeria: [
@@ -35,15 +35,15 @@ const productos = [
         stock: NaN,
         caracteristicas: [
             "servicio profesional",
-            "atenci?n VIP",
+            "atención VIP",
             "cuidado y detalle"
         ]
     },
     {
         id: 3,
-        nombre: "U?as esculpidas (gel o acr?lico)",
-        descripcion: "Extensi?n y modelado de u?as",
-        descripcionDetallada: "Extensi?n y modelado de u?as sobre moldes o tips, ideal para alargar o reforzar u?as naturales.",
+        nombre: "Uñas esculpidas (gel o acrílico)",
+        descripcion: "Extensión y modelado de uñas",
+        descripcionDetallada: "Extensión y modelado de uñas sobre moldes o tips, ideal para alargar o reforzar uñas naturales.",
         precio: 28000,
         imagen: "https://drive.google.com/uc?export=view&id=1jxGJ0M5SLiNBFao-ry_s2IhROtHWbMzN",
         galeria: [
@@ -53,15 +53,15 @@ const productos = [
         stock: NaN,
         caracteristicas: [
             "servicio profesional",
-            "atenci?n VIP",
+            "atención VIP",
             "cuidado y detalle"
         ]
     },
     {
         id: 4,
-        nombre: "Nail art (decoraci?n de u?as)",
-        descripcion: "Dise?os personalizados de u?as",
-        descripcionDetallada: "Dise?os personalizados: dibujos, piedras, encapsulados, degradados, efectos (chrome, mate, etc.).",
+        nombre: "Nail art (decoración de uñas)",
+        descripcion: "Diseños personalizados de uñas",
+        descripcionDetallada: "Diseños personalizados: dibujos, piedras, encapsulados, degradados, efectos (chrome, mate, etc.).",
         precio: 35000,
         imagen: "https://drive.google.com/uc?export=view&id=10nFBnN5hWEtLuLzaG_a-e_12MWRhEaM6",
         galeria: [
@@ -71,7 +71,7 @@ const productos = [
         stock: NaN,
         caracteristicas: [
             "servicio profesional",
-            "atenci?n VIP",
+            "atención VIP",
             "cuidado y detalle"
         ]
     }
@@ -139,7 +139,7 @@ function formatearPrecio(precio) {
     });
 }
 
-// Mostrar notificaci?n
+// Mostrar notificación
 function mostrarNotificacion(mensaje) {
     const notif = document.createElement('div');
     notif.textContent = mensaje;
@@ -164,7 +164,7 @@ function mostrarNotificacion(mensaje) {
     }, 2000);
 }
 
-// Agregar estilos de animaci?n
+// Agregar estilos de animación
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
@@ -190,5 +190,5 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Inicializar al cargar la p?gina
+// Inicializar al cargar la página
 document.addEventListener('DOMContentLoaded', renderizarProductos);
