@@ -176,13 +176,13 @@ function renderizarDetalleservicio(servicio) {
 
                 <div class="product-navigation">
                     ${prevProduct ? `
-                        <a href="servicio.html?id=${prevProduct.id}" class="nav-product-btn prev">
+                        <a href="producto.html?id=${prevProduct.id}" class="nav-product-btn prev">
                             ← ${prevProduct.nombre}
                         </a>
                     ` : '<span></span>'}
                     
                     ${nextProduct ? `
-                        <a href="servicio.html?id=${nextProduct.id}" class="nav-product-btn next">
+                        <a href="producto.html?id=${nextProduct.id}" class="nav-product-btn next">
                             ${nextProduct.nombre} →
                         </a>
                     ` : '<span></span>'}
@@ -600,7 +600,7 @@ function cargarserviciosRelacionados() {
     
     grid.innerHTML = relacionados.map(servicio => `
         <article class="product-card">
-            <a href="servicio.html?id=${servicio.id}" class="product-link">
+            <a href="producto.html?id=${servicio.id}" class="product-link">
                 <img src="${servicio.imagen}" alt="${servicio.nombre}" class="product-image" loading="lazy">
                 <div class="product-info">
                     <h3 class="product-title">${servicio.nombre}</h3>
@@ -639,7 +639,7 @@ function mostrarNotificacion(mensaje) {
         position: fixed;
         top: 80px;
         right: 20px;
-        background: #22c55e;
+        background: #9e70db;
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 5px;

@@ -15,6 +15,8 @@ html {
 :root {
     --primary-color: #ff477e;
     --primary-hover: #ff0a54;
+    --secundario: #B388EB;
+    --secundario-hover: #9e70db;
     --secondary-color: #64748b;
     --success-color: #22c55e;
     --danger-color: #ef4444;
@@ -1116,7 +1118,7 @@ body {
 .submit-btn {
     width: 100%;
     padding: 1rem;
-    background: var(--success-color);
+    background: var(--secundario);
     color: white;
     border: none;
     border-radius: 50px;
@@ -1127,7 +1129,7 @@ body {
 }
 
 .submit-btn:hover {
-    background: #16a34a;
+    background: var(--secundario-hover);
 }
 
 .seguro {
@@ -1164,7 +1166,7 @@ body {
 
 /* Footer */
 footer {
-    background: #B388EB;
+    background: var(--secundario);
     text-align: center;
     padding: 2rem;
     box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
@@ -1654,7 +1656,7 @@ footer p {
 
 .product-features li:before {
     content: "✓";
-    color: var(--success-color);
+    color: #B388EB;
     font-weight: bold;
     font-size: 1.2rem;
 }

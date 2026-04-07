@@ -89,7 +89,7 @@ function renderizarservicios() {
 
     grid.innerHTML = servicios.map(servicio => `
         <article class="product-card">
-            <a href="servicio.html?id=${servicio.id}" class="product-link">
+            <a href="producto.html?id=${servicio.id}" class="product-link">
                 <img src="${servicio.imagen}" alt="${servicio.nombre}" class="product-image" loading="lazy">
                 <div class="product-info">
                     <h3 class="product-title">${servicio.nombre}</h3>
@@ -98,7 +98,7 @@ function renderizarservicios() {
                 </div>
             </a>
             <div class="product-actions">
-                <button class="add-to-cart-btn" onclick="window.location.href='servicio.html?id=${servicio.id}'" aria-label="Ver detalles de ${servicio.nombre}">
+                <button class="add-to-cart-btn" onclick="window.location.href='producto.html?id=${servicio.id}'" aria-label="Ver detalles de ${servicio.nombre}">
                     Ver servicio
                 </button>
 
@@ -151,7 +151,7 @@ function mostrarNotificacion(mensaje) {
         position: fixed;
         top: 80px;
         right: 20px;
-        background: #22c55e;
+        background: #9e70db;
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 5px;

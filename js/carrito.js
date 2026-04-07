@@ -37,8 +37,9 @@ function renderizarCarrito() {
                 <h3 class="item-title">${item.nombre}</h3>
                 <p class="item-price">$${formatearPrecio(item.precio)}</p>
                 
-                <!--
+                
                 <div class="item-controls">
+                <!--
                     <button class="qty-btn" onclick="actualizarCantidad(${item.id}, -1)" aria-label="Disminuir cantidad">-</button>
                     <span class="qty-display">${item.quantity}</span>
                     <button class="qty-btn" onclick="actualizarCantidad(${item.id}, 1)" aria-label="Aumentar cantidad">+</button>
