@@ -1,22 +1,25 @@
 // Base de datos de productos con galería de imágenes
 // Generado automáticamente desde Google Sheets
-// Última actualización: 6/4/2026, 02:46:17
+// Última actualización: 7/4/2026, 08:23:05
 
 const productos = [
     {
         id: 1,
         nombre: "Manicura básica",
         descripcion: "Limpieza, corte, limado, tratamiento y esmaltado.",
-        descripcionDetallada: "Limpieza de uñas, corte, limado, tratamiento de cutículas y esmaltado tradicional. Es el producto estándar de mantenimiento.",
+        descripcionDetallada: "Limpieza de uñas, corte, limado, tratamiento de cutículas y esmaltado tradicional. Es el servicio estándar de mantenimiento.",
         precio: 15000,
         imagen: "https://lh3.googleusercontent.com/d/1rd4pdOsMxyGYPKelKjmSSNj-Nkpa_aOm",
         galeria: [
-            "https://lh3.googleusercontent.com/d/1rd4pdOsMxyGYPKelKjmSSNj-Nkpa_aOm"
+            "https://lh3.googleusercontent.com/d/1rd4pdOsMxyGYPKelKjmSSNj-Nkpa_aOm",
+            "https://lh3.googleusercontent.com/d/1lYd3dwgnLnkTdgtn5Ynk2q0wkfArvtE2",
+            "https://lh3.googleusercontent.com/d/1TebYCvIyXKWURoimYnDHqtwxz5MlxDcV",
+            "https://lh3.googleusercontent.com/d/12lJN6SmKZ6MvzRkWE9F_5nhdTWh1vpZo"
         ],
         categoria: "manicura",
         stock: NaN,
         caracteristicas: [
-            "producto profesional",
+            "servicio profesional",
             "atención VIP",
             "cuidado y detalle"
         ]
@@ -29,12 +32,15 @@ const productos = [
         precio: 22000,
         imagen: "https://lh3.googleusercontent.com/d/1clxwr84yA212Ui7NtBMt7IxdkT9J6ab6",
         galeria: [
-            "https://lh3.googleusercontent.com/d/1clxwr84yA212Ui7NtBMt7IxdkT9J6ab6"
+            "https://lh3.googleusercontent.com/d/1clxwr84yA212Ui7NtBMt7IxdkT9J6ab6",
+            "https://lh3.googleusercontent.com/d/1GrTOaOm2JDnFGxkET4hBOoAvOpojrkYP",
+            "https://lh3.googleusercontent.com/d/1YB5tKsB8OKC3BP4-Dt6DiCKsOv7xfk9j",
+            "https://lh3.googleusercontent.com/d/1c-RmEWNWPn19juc-TtCyDeXStx_GpMsR"
         ],
         categoria: "manicura",
         stock: NaN,
         caracteristicas: [
-            "producto profesional",
+            "servicio profesional",
             "atención VIP",
             "cuidado y detalle"
         ]
@@ -47,12 +53,15 @@ const productos = [
         precio: 28000,
         imagen: "https://lh3.googleusercontent.com/d/1jxGJ0M5SLiNBFao-ry_s2IhROtHWbMzN",
         galeria: [
-            "https://lh3.googleusercontent.com/d/1jxGJ0M5SLiNBFao-ry_s2IhROtHWbMzN"
+            "https://lh3.googleusercontent.com/d/1jxGJ0M5SLiNBFao-ry_s2IhROtHWbMzN",
+            "https://lh3.googleusercontent.com/d/1ynE-ZIcF3fgi2LZfs46NuYbUIJxT6mrq",
+            "https://lh3.googleusercontent.com/d/1QnahFaEnY3gpt7kFMhjO08VW4AglIeLT",
+            "https://lh3.googleusercontent.com/d/1JSs6NBHWgumXGiwSoWHOYecbmphr02MQ"
         ],
         categoria: "manicura",
         stock: NaN,
         caracteristicas: [
-            "producto profesional",
+            "servicio profesional",
             "atención VIP",
             "cuidado y detalle"
         ]
@@ -65,12 +74,15 @@ const productos = [
         precio: 35000,
         imagen: "https://lh3.googleusercontent.com/d/10nFBnN5hWEtLuLzaG_a-e_12MWRhEaM6",
         galeria: [
-            "https://lh3.googleusercontent.com/d/10nFBnN5hWEtLuLzaG_a-e_12MWRhEaM6"
+            "https://lh3.googleusercontent.com/d/10nFBnN5hWEtLuLzaG_a-e_12MWRhEaM6",
+            "https://lh3.googleusercontent.com/d/12ZJWfuPZ0MmLIYhUeDS_5glFnP1suqGT",
+            "https://lh3.googleusercontent.com/d/1ruNqdMG2TSb0QvNSqP_UTFN26dOaRoRB",
+            "https://lh3.googleusercontent.com/d/1W2cxw7TU5Ms6n99fGZ5t74D1hheA-qn3"
         ],
         categoria: "manicura",
         stock: NaN,
         caracteristicas: [
-            "producto profesional",
+            "servicio profesional",
             "atención VIP",
             "cuidado y detalle"
         ]
@@ -83,7 +95,7 @@ const productos = [
 // ============================================
 
 // Renderizar productos
-function renderizarproductos() {
+function renderizarProductos() {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
 
@@ -132,7 +144,7 @@ function agregarAlCarrito(id) {
 
     localStorage.setItem('cart', JSON.stringify(cart));
     actualizarContadorCarrito();
-    mostrarNotificacion('producto agregado al carrito');
+    mostrarNotificacion('Producto agregado al carrito');
 }
 
 // Formatear precio
@@ -151,7 +163,7 @@ function mostrarNotificacion(mensaje) {
         position: fixed;
         top: 80px;
         right: 20px;
-        background: #9e70db;
+        background: #22c55e;
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 5px;
@@ -195,4 +207,4 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Inicializar al cargar la página
-document.addEventListener('DOMContentLoaded', renderizarproductos);
+document.addEventListener('DOMContentLoaded', renderizarProductos);
