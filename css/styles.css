@@ -39,7 +39,7 @@ html {
 }
 
 /* =========================
-   Banner productos
+   Banner servicios
    ========================= */
 
 .banner {
@@ -171,21 +171,21 @@ html {
 
 }
 
-.banners-productos {
+.banners-servicios {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
 }
 
 @media (max-width: 768px) {
-    .banners-productos {
+    .banners-servicios {
         grid-template-columns: 1fr;
         margin: 1rem;
         gap: 1rem;
     }
 }
 
-.banner-productos-contenido {
+.banner-servicios-contenido {
     background-color: #ffffff;
     border-radius: 16px;
     display: grid;
@@ -193,7 +193,7 @@ html {
 }
 
 @media (max-width: 768px) {
-    .banner-productos-contenido {
+    .banner-servicios-contenido {
         grid-template-columns: 60% 40%;
     }
 }
@@ -1832,7 +1832,7 @@ footer p {
     }
 }
 
-/* Estilos adicionales para la galería de imágenes en producto-detalle.css */
+/* Estilos adicionales para la galería de imágenes en servicio-detalle.css */
 /* Agregar estos estilos al archivo styles.css existente */
 
 /* Contenedor de imagen principal */

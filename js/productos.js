@@ -1,8 +1,8 @@
-// Base de datos de productos con galería de imágenes
+// Base de datos de servicios con galería de imágenes
 // Generado automáticamente desde Google Sheets
 // Última actualización: 6/4/2026, 02:46:17
 
-const productos = [
+const servicios = [
     {
         id: 1,
         nombre: "Manicura básica",
@@ -82,27 +82,27 @@ const productos = [
 // FUNCIONES DEL CLIENTE (Navegador)
 // ============================================
 
-// Renderizar productos
-function renderizarProductos() {
+// Renderizar servicios
+function renderizarservicios() {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
 
-    grid.innerHTML = productos.map(producto => `
+    grid.innerHTML = servicios.map(servicio => `
         <article class="product-card">
-            <a href="producto.html?id=${producto.id}" class="product-link">
-                <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image" loading="lazy">
+            <a href="servicio.html?id=${servicio.id}" class="product-link">
+                <img src="${servicio.imagen}" alt="${servicio.nombre}" class="product-image" loading="lazy">
                 <div class="product-info">
-                    <h3 class="product-title">${producto.nombre}</h3>
-                    <p class="product-description">${producto.descripcion}</p>
-                    <p class="product-price">${formatearPrecio(producto.precio)}</p>
+                    <h3 class="product-title">${servicio.nombre}</h3>
+                    <p class="product-description">${servicio.descripcion}</p>
+                    <p class="product-price">${formatearPrecio(servicio.precio)}</p>
                 </div>
             </a>
             <div class="product-actions">
-                <button class="add-to-cart-btn" onclick="window.location.href='producto.html?id=${producto.id}'" aria-label="Ver detalles de ${producto.nombre}">
-                    Ver producto
+                <button class="add-to-cart-btn" onclick="window.location.href='servicio.html?id=${servicio.id}'" aria-label="Ver detalles de ${servicio.nombre}">
+                    Ver servicio
                 </button>
 
-                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${producto.id})" aria-label="Agregar ${producto.nombre} al carrito">
+                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${servicio.id})" aria-label="Agregar ${servicio.nombre} al carrito">
                     Agregar al Carrito
                 </button>
             </div>
@@ -112,8 +112,8 @@ function renderizarProductos() {
 
 // Agregar al carrito
 function agregarAlCarrito(id) {
-    const producto = productos.find(p => p.id === id);
-    if (!producto) return;
+    const servicio = servicios.find(p => p.id === id);
+    if (!servicio) return;
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingItem = cart.find(item => item.id === id);
@@ -122,17 +122,17 @@ function agregarAlCarrito(id) {
         existingItem.quantity += 1;
     } else {
         cart.push({
-            id: producto.id,
-            nombre: producto.nombre,
-            precio: producto.precio,
-            imagen: producto.imagen,
+            id: servicio.id,
+            nombre: servicio.nombre,
+            precio: servicio.precio,
+            imagen: servicio.imagen,
             quantity: 1
         });
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
     actualizarContadorCarrito();
-    mostrarNotificacion('Producto agregado al carrito');
+    mostrarNotificacion('servicio agregado al carrito');
 }
 
 // Formatear precio
@@ -195,4 +195,4 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Inicializar al cargar la página
-document.addEventListener('DOMContentLoaded', renderizarProductos);
+document.addEventListener('DOMContentLoaded', renderizarservicios);

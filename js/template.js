@@ -29,7 +29,7 @@ function renderHeader(activePage = '') {
                 
                 <div class="nav-menu">
                     <a href="index.html" class="nav-link ${activePage === 'inicio' ? 'active' : ''}">Inicio</a>
-                    <a href="index.html#tienda" class="nav-link ${activePage === 'productos' ? 'active' : ''}">Productos</a>
+                    <a href="index.html#tienda" class="nav-link ${activePage === 'servicios' ? 'active' : ''}">Servicios</a>
                     <!--<a href="nosotros.html" class="nav-link ${activePage === 'nosotros' ? 'active' : ''}">Nosotros</a>-->
                     <!--<a href="faq.html" class="nav-link ${activePage === 'faq' ? 'active' : ''}">Preguntas</a>--> 
                     <a href="index.html#contacto" class="nav-link ${activePage === 'contacto' ? 'active' : ''}">Contacto</a>

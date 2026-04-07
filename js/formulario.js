@@ -20,7 +20,7 @@ function enviarPedidoWhatsApp(e) {
         notas: formData.get('notas') || 'Sin notas adicionales'
     };
     
-    // Obtener productos del carrito
+    // Obtener servicios del carrito
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     
     if (cart.length === 0) {
@@ -41,7 +41,7 @@ function enviarPedidoWhatsApp(e) {
     mensaje += `Teléfono: ${datos.telefono}\n`;
     mensaje += `Email: ${datos.email}\n\n`;
     
-    mensaje += `*Productos:*\n`;
+    mensaje += `*servicios:*\n`;
     cart.forEach((item, index) => {
         mensaje += `${index + 1}. ${item.nombre}\n`;
         mensaje += `   Cantidad: ${item.quantity}\n`;

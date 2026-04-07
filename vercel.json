@@ -13,8 +13,8 @@
       "destination": "/gracias.html"
     },
     {
-      "source": "/producto",
-      "destination": "/producto.html"
+      "source": "/servicio",
+      "destination": "/servicio.html"
     }
   ]
 }

@@ -22,7 +22,7 @@ function renderizarCarrito() {
         cartItemsContainer.innerHTML = `
             <div class="empty-cart">
                 <h2>Tu carrito está vacío</h2>
-                <p>Agrega productos para comenzar tu compra</p>
+                <p>Agrega servicios para comenzar tu compra</p>
                 <a href="index.html" class="shop-btn">Ir a la tienda</a>
             </div>
         `;
@@ -55,7 +55,7 @@ function renderizarCarrito() {
     actualizarTotales();
 }
 
-// Actualizar cantidad de un producto
+// Actualizar cantidad de un servicio
 function actualizarCantidad(id, cambio) {
     let cart = obtenerCarrito();
     const item = cart.find(i => i.id === id);
@@ -73,7 +73,7 @@ function actualizarCantidad(id, cambio) {
     }
 }
 
-// Eliminar producto del carrito
+// Eliminar servicio del carrito
 function eliminarDelCarrito(id) {
     let cart = obtenerCarrito();
     cart = cart.filter(item => item.id !== id);

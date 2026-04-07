@@ -1,69 +1,69 @@
-// Página de detalle de producto con galería de imágenes y zoom
+// Página de detalle de servicio con galería de imágenes y zoom
 
 let imagenActualIndex = 0;
 let zoomActivo = false;
 
 document.addEventListener('DOMContentLoaded', function() {
-    cargarDetalleProducto();
-    cargarProductosRelacionados();
+    cargarDetalleservicio();
+    cargarserviciosRelacionados();
 });
 
-// Obtener el ID del producto desde la URL
-function obtenerIdProducto() {
+// Obtener el ID del servicio desde la URL
+function obtenerIdservicio() {
     const params = new URLSearchParams(window.location.search);
     return parseInt(params.get('id'));
 }
 
-// Cargar detalle del producto
-function cargarDetalleProducto() {
-    const productoId = obtenerIdProducto();
-    const producto = productos.find(p => p.id === productoId);
+// Cargar detalle del servicio
+function cargarDetalleservicio() {
+    const servicioId = obtenerIdservicio();
+    const servicio = servicios.find(p => p.id === servicioId);
     
-    if (!producto) {
-        mostrarProductoNoEncontrado();
+    if (!servicio) {
+        mostrarservicioNoEncontrado();
         return;
     }
     
     // Actualizar título de la página
-    document.title = `${producto.nombre} - Mi Tienda Online`;
+    document.title = `${servicio.nombre} - Mi Tienda Online`;
     
     // Actualizar breadcrumb
     const breadcrumbProduct = document.getElementById('breadcrumbProduct');
     if (breadcrumbProduct) {
-        breadcrumbProduct.textContent = producto.nombre;
+        breadcrumbProduct.textContent = servicio.nombre;
     }
     
-    // Renderizar detalle del producto
-    renderizarDetalleProducto(producto);
+    // Renderizar detalle del servicio
+    renderizarDetalleservicio(servicio);
 }
 
-// Renderizar el detalle completo del producto
-function renderizarDetalleProducto(producto) {
+// Renderizar el detalle completo del servicio
+function renderizarDetalleservicio(servicio) {
     const container = document.getElementById('productDetailContainer');
     if (!container) return;
     
     // Determinar estado del stock
     let stockClass = '';
     let stockText = '';
-    if (producto.stock > 10) {
+    if (servicio.stock > 10) {
         stockClass = '';
-        stockText = `En stock (${producto.stock} disponibles)`;
-    } else if (producto.stock > 0) {
+        stockText = `En stock (${servicio.stock} disponibles)`;
+    } else if (servicio.stock > 0) {
         stockClass = 'low';
-        stockText = `¡Últimas unidades! (${producto.stock} disponibles)`;
+        stockText = `¡Últimas unidades! (${servicio.stock} disponibles)`;
     } else {
         stockClass = 'out';
         stockText = 'Agotado';
     }
     
-    // Navegación entre productos
-    const prevProduct = productos.find(p => p.id === producto.id - 1);
-    const nextProduct = productos.find(p => p.id === producto.id + 1);
+    // Navegación entre servicios
+    const prevProduct = servicios.find(p => p.id === servicio.id - 1);
+    const nextProduct = servicios.find(p => p.id === servicio.id + 1);
     
     // Usar galería si existe, sino usar imagen principal
-    const imagenesGaleria = producto.galeria && producto.galeria.length > 0 
-        ? producto.galeria 
-        : [producto.imagen];
+    const imagenesGaleria = servicio.galeria && servicio.galeria.length > 0 
+        ? servicio.galeria 
+        : [servicio.imagen];
     
     container.innerHTML = `
         <div class="product-detail-grid">
@@ -71,7 +71,7 @@ function renderizarDetalleProducto(producto) {
                 <!-- Imagen principal -->
                 <div class="main-image-wrapper">
                     <img src="${imagenesGaleria[0]}" 
-                         alt="${producto.nombre}" 
+                         alt="${servicio.nombre}" 
                          class="product-detail-image" 
                          id="mainProductImage"
                          onclick="toggleZoom()">
@@ -100,7 +100,7 @@ function renderizarDetalleProducto(producto) {
                     <div class="thumbnails-container">
                         ${imagenesGaleria.map((img, idx) => `
                             <img src="${img}" 
-                                 alt="${producto.nombre} - Vista ${idx + 1}" 
+                                 alt="${servicio.nombre} - Vista ${idx + 1}" 
                                  class="thumbnail ${idx === 0 ? 'active' : ''}" 
                                  onclick="seleccionarImagen(${idx})"
                                  loading="lazy">
@@ -110,21 +110,21 @@ function renderizarDetalleProducto(producto) {
             </div>
             
             <div class="product-detail-info">
-                <span class="product-category">${producto.categoria}</span>
+                <span class="product-category">${servicio.categoria}</span>
                 <div class="product-title-row">
-                    <h1>${producto.nombre}</h1>
+                    <h1>${servicio.nombre}</h1>
                 </div>
                 
                 <p class="product-stock ${stockClass}">${stockText}</p>
                 
-                <p class="product-detail-price">$${formatearPrecio(producto.precio)}</p>
+                <p class="product-detail-price">$${formatearPrecio(servicio.precio)}</p>
                 
-                <p class="product-detail-description">${producto.descripcionDetallada}</p>
+                <p class="product-detail-description">${servicio.descripcionDetallada}</p>
                 
                 <div class="product-features">
                     <h3>Características:</h3>
                     <ul>
-                        ${producto.caracteristicas.map(caracteristica => `
+                        ${servicio.caracteristicas.map(caracteristica => `
                             <li>${caracteristica}</li>
                         `).join('')}
                     </ul>
@@ -142,14 +142,14 @@ function renderizarDetalleProducto(producto) {
                 -->
 
                 <div class="product-actions-detail">
-                    <button class="btn-add-cart" id="btnAddCart" onclick="agregarAlCarritoDetalle(${producto.id})" ${producto.stock === 0 ? 'disabled' : ''}>
-                        ${producto.stock === 0 ? 'Agotado' : 'Reservar turno'}
+                    <button class="btn-add-cart" id="btnAddCart" onclick="agregarAlCarritoDetalle(${servicio.id})" ${servicio.stock === 0 ? 'disabled' : ''}>
+                        ${servicio.stock === 0 ? 'Agotado' : 'Reservar turno'}
                     </button>
                     <a href="carrito.html" class="btn-go-cart" id="btnGoCart" style="display: none;">
                         Ir al Carrito →
                     </a>
                     <!--
-                    <button class="btn-buy-now" onclick="comprarAhora(${producto.id})" ${producto.stock === 0 ? 'disabled' : ''}>
+                    <button class="btn-buy-now" onclick="comprarAhora(${servicio.id})" ${servicio.stock === 0 ? 'disabled' : ''}>
                         Comprar Ahora
                     </button>
                     -->
@@ -157,7 +157,7 @@ function renderizarDetalleProducto(producto) {
                 
                 <div class="share-buttons">
                     <span class="share-label">Compartir:</span>
-                    <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(producto.nombre + ' - ' + window.location.href)}" 
+                    <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(servicio.nombre + ' - ' + window.location.href)}" 
                        target="_blank" rel="noopener" class="share-btn whatsapp" aria-label="Compartir en WhatsApp">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
@@ -165,7 +165,7 @@ function renderizarDetalleProducto(producto) {
                        target="_blank" rel="noopener" class="share-btn facebook" aria-label="Compartir en Facebook">
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(producto.nombre)}&url=${encodeURIComponent(window.location.href)}" 
+                    <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(servicio.nombre)}&url=${encodeURIComponent(window.location.href)}" 
                        target="_blank" rel="noopener" class="share-btn twitter" aria-label="Compartir en X/Twitter">
                         <i class="fa-brands fa-x-twitter"></i>
                     </a>
@@ -176,13 +176,13 @@ function renderizarDetalleProducto(producto) {
 
                 <div class="product-navigation">
                     ${prevProduct ? `
-                        <a href="producto.html?id=${prevProduct.id}" class="nav-product-btn prev">
+                        <a href="servicio.html?id=${prevProduct.id}" class="nav-product-btn prev">
                             ← ${prevProduct.nombre}
                         </a>
                     ` : '<span></span>'}
                     
                     ${nextProduct ? `
-                        <a href="producto.html?id=${nextProduct.id}" class="nav-product-btn next">
+                        <a href="servicio.html?id=${nextProduct.id}" class="nav-product-btn next">
                             ${nextProduct.nombre} →
                         </a>
                     ` : '<span></span>'}
@@ -194,18 +194,18 @@ function renderizarDetalleProducto(producto) {
 
 // Cambiar imagen en la galería
 function cambiarImagen(direccion) {
-    const productoId = obtenerIdProducto();
-    const producto = productos.find(p => p.id === productoId);
+    const servicioId = obtenerIdservicio();
+    const servicio = servicios.find(p => p.id === servicioId);
     
-    if (!producto || !producto.galeria || producto.galeria.length <= 1) return;
+    if (!servicio || !servicio.galeria || servicio.galeria.length <= 1) return;
     
     imagenActualIndex += direccion;
     
     // Ciclo infinito
     if (imagenActualIndex < 0) {
-        imagenActualIndex = producto.galeria.length - 1;
+        imagenActualIndex = servicio.galeria.length - 1;
     }
-    if (imagenActualIndex >= producto.galeria.length) {
+    if (imagenActualIndex >= servicio.galeria.length) {
         imagenActualIndex = 0;
     }
     
@@ -220,10 +220,10 @@ function seleccionarImagen(index) {
 
 // Actualizar imagen principal y miniaturas
 function actualizarImagenPrincipal() {
-    const productoId = obtenerIdProducto();
-    const producto = productos.find(p => p.id === productoId);
+    const servicioId = obtenerIdservicio();
+    const servicio = servicios.find(p => p.id === servicioId);
     
-    if (!producto || !producto.galeria) return;
+    if (!servicio || !servicio.galeria) return;
     
     const mainImage = document.getElementById('mainProductImage');
     const imageCounter = document.getElementById('imageCounter');
@@ -233,13 +233,13 @@ function actualizarImagenPrincipal() {
         // Efecto de transición
         mainImage.style.opacity = '0';
         setTimeout(() => {
-            mainImage.src = producto.galeria[imagenActualIndex];
+            mainImage.src = servicio.galeria[imagenActualIndex];
             mainImage.style.opacity = '1';
         }, 200);
     }
     
     if (imageCounter) {
-        imageCounter.textContent = `${imagenActualIndex + 1} / ${producto.galeria.length}`;
+        imageCounter.textContent = `${imagenActualIndex + 1} / ${servicio.galeria.length}`;
     }
     
     // Actualizar miniaturas activas
@@ -254,14 +254,14 @@ function actualizarImagenPrincipal() {
 
 // Toggle zoom en la imagen
 function toggleZoom() {
-    const productoId = obtenerIdProducto();
-    const producto = productos.find(p => p.id === productoId);
+    const servicioId = obtenerIdservicio();
+    const servicio = servicios.find(p => p.id === servicioId);
     
-    if (!producto) return;
+    if (!servicio) return;
     
-    const imagenesGaleria = producto.galeria && producto.galeria.length > 0 
-        ? producto.galeria 
-        : [producto.imagen];
+    const imagenesGaleria = servicio.galeria && servicio.galeria.length > 0 
+        ? servicio.galeria 
+        : [servicio.imagen];
     
     // Crear modal de zoom
     const zoomModal = document.createElement('div');
@@ -284,7 +284,7 @@ function toggleZoom() {
             
             <div class="zoom-image-wrapper">
                 <img src="${imagenesGaleria[imagenActualIndex]}" 
-                     alt="${producto.nombre}" 
+                     alt="${servicio.nombre}" 
                      class="zoom-image" 
                      id="zoomImage"
                      draggable="false">
@@ -298,7 +298,7 @@ function toggleZoom() {
                 <div class="zoom-thumbnails">
                     ${imagenesGaleria.map((img, idx) => `
                         <img src="${img}" 
-                             alt="${producto.nombre} - Vista ${idx + 1}" 
+                             alt="${servicio.nombre} - Vista ${idx + 1}" 
                              class="zoom-thumbnail ${idx === imagenActualIndex ? 'active' : ''}" 
                              onclick="event.stopPropagation(); seleccionarImagenZoom(${idx})">
                     `).join('')}
@@ -342,17 +342,17 @@ function cerrarZoom() {
 
 // Cambiar imagen en modo zoom
 function cambiarImagenZoom(direccion) {
-    const productoId = obtenerIdProducto();
-    const producto = productos.find(p => p.id === productoId);
+    const servicioId = obtenerIdservicio();
+    const servicio = servicios.find(p => p.id === servicioId);
     
-    if (!producto || !producto.galeria || producto.galeria.length <= 1) return;
+    if (!servicio || !servicio.galeria || servicio.galeria.length <= 1) return;
     
     imagenActualIndex += direccion;
     
     if (imagenActualIndex < 0) {
-        imagenActualIndex = producto.galeria.length - 1;
+        imagenActualIndex = servicio.galeria.length - 1;
     }
-    if (imagenActualIndex >= producto.galeria.length) {
+    if (imagenActualIndex >= servicio.galeria.length) {
         imagenActualIndex = 0;
     }
     
@@ -367,10 +367,10 @@ function seleccionarImagenZoom(index) {
 
 // Actualizar imagen en modo zoom
 function actualizarImagenZoom() {
-    const productoId = obtenerIdProducto();
-    const producto = productos.find(p => p.id === productoId);
+    const servicioId = obtenerIdservicio();
+    const servicio = servicios.find(p => p.id === servicioId);
     
-    if (!producto || !producto.galeria) return;
+    if (!servicio || !servicio.galeria) return;
     
     const zoomImage = document.getElementById('zoomImage');
     const zoomCounter = document.getElementById('zoomCounter');
@@ -381,7 +381,7 @@ function actualizarImagenZoom() {
         zoomImage.style.transform = 'scale(0.95)';
         
         setTimeout(() => {
-            zoomImage.src = producto.galeria[imagenActualIndex];
+            zoomImage.src = servicio.galeria[imagenActualIndex];
             zoomImage.style.opacity = '1';
             zoomImage.style.transform = 'scale(1)';
             
@@ -394,7 +394,7 @@ function actualizarImagenZoom() {
     }
     
     if (zoomCounter) {
-        zoomCounter.textContent = `${imagenActualIndex + 1} / ${producto.galeria.length}`;
+        zoomCounter.textContent = `${imagenActualIndex + 1} / ${servicio.galeria.length}`;
     }
     
     zoomThumbnails.forEach((thumb, idx) => {
@@ -508,16 +508,16 @@ function manejarTeclasZoom(e) {
 let cantidadSeleccionada = 1;
 
 function cambiarCantidad(cambio) {
-    const productoId = obtenerIdProducto();
-    const producto = productos.find(p => p.id === productoId);
+    const servicioId = obtenerIdservicio();
+    const servicio = servicios.find(p => p.id === servicioId);
     
-    if (!producto) return;
+    if (!servicio) return;
     
     cantidadSeleccionada += cambio;
     
     // Limitar entre 1 y stock disponible
     if (cantidadSeleccionada < 1) cantidadSeleccionada = 1;
-    if (cantidadSeleccionada > producto.stock) cantidadSeleccionada = producto.stock;
+    if (cantidadSeleccionada > servicio.stock) cantidadSeleccionada = servicio.stock;
     
     // Actualizar display
     const quantityDisplay = document.getElementById('quantityValue');
@@ -528,8 +528,8 @@ function cambiarCantidad(cambio) {
 
 // Reservar turno desde detalle
 function agregarAlCarritoDetalle(id) {
-    const producto = productos.find(p => p.id === id);
-    if (!producto) return;
+    const servicio = servicios.find(p => p.id === id);
+    if (!servicio) return;
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingItem = cart.find(item => item.id === id);
@@ -538,17 +538,17 @@ function agregarAlCarritoDetalle(id) {
         existingItem.quantity += cantidadSeleccionada;
     } else {
         cart.push({
-            id: producto.id,
-            nombre: producto.nombre,
-            precio: producto.precio,
-            imagen: producto.imagen,
+            id: servicio.id,
+            nombre: servicio.nombre,
+            precio: servicio.precio,
+            imagen: servicio.imagen,
             quantity: cantidadSeleccionada
         });
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
     actualizarContadorCarrito();
-    mostrarNotificacion(`${cantidadSeleccionada} ${cantidadSeleccionada === 1 ? 'producto agregado' : 'productos agregados'} al carrito`);
+    mostrarNotificacion(`${cantidadSeleccionada} ${cantidadSeleccionada === 1 ? 'servicio agregado' : 'servicios agregados'} al carrito`);
     
     // Mostrar botón "Ir al Carrito"
     const btnAddCart = document.getElementById('btnAddCart');
@@ -575,20 +575,20 @@ function comprarAhora(id) {
     }, 500);
 }
 
-// Cargar productos relacionados
-function cargarProductosRelacionados() {
-    const productoId = obtenerIdProducto();
-    const productoActual = productos.find(p => p.id === productoId);
+// Cargar servicios relacionados
+function cargarserviciosRelacionados() {
+    const servicioId = obtenerIdservicio();
+    const servicioActual = servicios.find(p => p.id === servicioId);
     
-    if (!productoActual) return;
+    if (!servicioActual) return;
     
-    let relacionados = productos.filter(p => 
-        p.id !== productoId && p.categoria === productoActual.categoria
+    let relacionados = servicios.filter(p => 
+        p.id !== servicioId && p.categoria === servicioActual.categoria
     );
     
     if (relacionados.length < 3) {
-        const otros = productos.filter(p => 
-            p.id !== productoId && !relacionados.includes(p)
+        const otros = servicios.filter(p => 
+            p.id !== servicioId && !relacionados.includes(p)
         );
         relacionados = [...relacionados, ...otros];
     }
@@ -598,18 +598,18 @@ function cargarProductosRelacionados() {
     const grid = document.getElementById('relatedProducts');
     if (!grid) return;
     
-    grid.innerHTML = relacionados.map(producto => `
+    grid.innerHTML = relacionados.map(servicio => `
         <article class="product-card">
-            <a href="producto.html?id=${producto.id}" class="product-link">
-                <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image" loading="lazy">
+            <a href="servicio.html?id=${servicio.id}" class="product-link">
+                <img src="${servicio.imagen}" alt="${servicio.nombre}" class="product-image" loading="lazy">
                 <div class="product-info">
-                    <h3 class="product-title">${producto.nombre}</h3>
-                    <p class="product-description">${producto.descripcion}</p>
-                    <p class="product-price">$${formatearPrecio(producto.precio)}</p>
+                    <h3 class="product-title">${servicio.nombre}</h3>
+                    <p class="product-description">${servicio.descripcion}</p>
+                    <p class="product-price">$${formatearPrecio(servicio.precio)}</p>
                 </div>
             </a>
             <div class="product-actions">
-                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${producto.id})" aria-label="Agregar ${producto.nombre} al carrito">
+                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${servicio.id})" aria-label="Agregar ${servicio.nombre} al carrito">
                     Reservar turno
                 </button>
             </div>
@@ -617,15 +617,15 @@ function cargarProductosRelacionados() {
     `).join('');
 }
 
-// Mostrar producto no encontrado
-function mostrarProductoNoEncontrado() {
+// Mostrar servicio no encontrado
+function mostrarservicioNoEncontrado() {
     const container = document.getElementById('productDetailContainer');
     if (!container) return;
     
     container.innerHTML = `
         <div class="empty-cart">
-            <h2>Producto no encontrado</h2>
-            <p>El producto que buscas no existe o ha sido eliminado</p>
+            <h2>servicio no encontrado</h2>
+            <p>El servicio que buscas no existe o ha sido eliminado</p>
             <a href="index.html" class="shop-btn">Volver a la tienda</a>
         </div>
     `;
