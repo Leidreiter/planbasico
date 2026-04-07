@@ -1,13 +1,13 @@
-// Base de datos de servicios con galería de imágenes
+// Base de datos de productos con galería de imágenes
 // Generado automáticamente desde Google Sheets
 // Última actualización: 6/4/2026, 02:46:17
 
-const servicios = [
+const productos = [
     {
         id: 1,
         nombre: "Manicura básica",
         descripcion: "Limpieza, corte, limado, tratamiento y esmaltado.",
-        descripcionDetallada: "Limpieza de uñas, corte, limado, tratamiento de cutículas y esmaltado tradicional. Es el servicio estándar de mantenimiento.",
+        descripcionDetallada: "Limpieza de uñas, corte, limado, tratamiento de cutículas y esmaltado tradicional. Es el producto estándar de mantenimiento.",
         precio: 15000,
         imagen: "https://lh3.googleusercontent.com/d/1rd4pdOsMxyGYPKelKjmSSNj-Nkpa_aOm",
         galeria: [
@@ -16,7 +16,7 @@ const servicios = [
         categoria: "manicura",
         stock: NaN,
         caracteristicas: [
-            "servicio profesional",
+            "producto profesional",
             "atención VIP",
             "cuidado y detalle"
         ]
@@ -34,7 +34,7 @@ const servicios = [
         categoria: "manicura",
         stock: NaN,
         caracteristicas: [
-            "servicio profesional",
+            "producto profesional",
             "atención VIP",
             "cuidado y detalle"
         ]
@@ -52,7 +52,7 @@ const servicios = [
         categoria: "manicura",
         stock: NaN,
         caracteristicas: [
-            "servicio profesional",
+            "producto profesional",
             "atención VIP",
             "cuidado y detalle"
         ]
@@ -70,7 +70,7 @@ const servicios = [
         categoria: "manicura",
         stock: NaN,
         caracteristicas: [
-            "servicio profesional",
+            "producto profesional",
             "atención VIP",
             "cuidado y detalle"
         ]
@@ -82,27 +82,27 @@ const servicios = [
 // FUNCIONES DEL CLIENTE (Navegador)
 // ============================================
 
-// Renderizar servicios
-function renderizarservicios() {
+// Renderizar productos
+function renderizarproductos() {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
 
-    grid.innerHTML = servicios.map(servicio => `
+    grid.innerHTML = productos.map(producto => `
         <article class="product-card">
-            <a href="producto.html?id=${servicio.id}" class="product-link">
-                <img src="${servicio.imagen}" alt="${servicio.nombre}" class="product-image" loading="lazy">
+            <a href="producto.html?id=${producto.id}" class="product-link">
+                <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image" loading="lazy">
                 <div class="product-info">
-                    <h3 class="product-title">${servicio.nombre}</h3>
-                    <p class="product-description">${servicio.descripcion}</p>
-                    <p class="product-price">${formatearPrecio(servicio.precio)}</p>
+                    <h3 class="product-title">${producto.nombre}</h3>
+                    <p class="product-description">${producto.descripcion}</p>
+                    <p class="product-price">${formatearPrecio(producto.precio)}</p>
                 </div>
             </a>
             <div class="product-actions">
-                <button class="add-to-cart-btn" onclick="window.location.href='producto.html?id=${servicio.id}'" aria-label="Ver detalles de ${servicio.nombre}">
-                    Ver servicio
+                <button class="add-to-cart-btn" onclick="window.location.href='producto.html?id=${producto.id}'" aria-label="Ver detalles de ${producto.nombre}">
+                    Ver producto
                 </button>
 
-                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${servicio.id})" aria-label="Agregar ${servicio.nombre} al carrito">
+                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${producto.id})" aria-label="Agregar ${producto.nombre} al carrito">
                     Agregar al Carrito
                 </button>
             </div>
@@ -112,8 +112,8 @@ function renderizarservicios() {
 
 // Agregar al carrito
 function agregarAlCarrito(id) {
-    const servicio = servicios.find(p => p.id === id);
-    if (!servicio) return;
+    const producto = productos.find(p => p.id === id);
+    if (!producto) return;
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingItem = cart.find(item => item.id === id);
@@ -122,17 +122,17 @@ function agregarAlCarrito(id) {
         existingItem.quantity += 1;
     } else {
         cart.push({
-            id: servicio.id,
-            nombre: servicio.nombre,
-            precio: servicio.precio,
-            imagen: servicio.imagen,
+            id: producto.id,
+            nombre: producto.nombre,
+            precio: producto.precio,
+            imagen: producto.imagen,
             quantity: 1
         });
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
     actualizarContadorCarrito();
-    mostrarNotificacion('servicio agregado al carrito');
+    mostrarNotificacion('producto agregado al carrito');
 }
 
 // Formatear precio
@@ -195,4 +195,4 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Inicializar al cargar la página
-document.addEventListener('DOMContentLoaded', renderizarservicios);
+document.addEventListener('DOMContentLoaded', renderizarproductos);

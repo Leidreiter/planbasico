@@ -1,4 +1,4 @@
-// Sistema de búsqueda de servicios en tiempo real - Compatible con categorías
+// Sistema de búsqueda de productos en tiempo real - Compatible con categorías
 
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Realizar búsqueda
-        buscarservicios(query);
+        buscarproductos(query);
     });
 
     // Limpiar búsqueda
@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Función principal de búsqueda
-function buscarservicios(query) {
+function buscarproductos(query) {
     const grid = document.getElementById('productsGrid');
     const noResults = document.getElementById('noResults');
     const searchResults = document.getElementById('searchResults');
     
-    if (!grid || !servicios) return;
+    if (!grid || !productos) return;
 
     // Si no hay búsqueda, mostrar categorías
     if (!query || query.length === 0) {
@@ -57,11 +57,11 @@ function buscarservicios(query) {
     // Normalizar query (minúsculas, sin acentos)
     const queryNormalizado = normalizarTexto(query);
 
-    // Filtrar servicios
-    const serviciosFiltrados = servicios.filter(servicio => {
-        const nombreNormalizado = normalizarTexto(servicio.nombre);
-        const descripcionNormalizada = normalizarTexto(servicio.descripcion);
-        const categoriaNormalizada = normalizarTexto(servicio.categoria);
+    // Filtrar productos
+    const productosFiltrados = productos.filter(producto => {
+        const nombreNormalizado = normalizarTexto(producto.nombre);
+        const descripcionNormalizada = normalizarTexto(producto.descripcion);
+        const categoriaNormalizada = normalizarTexto(producto.categoria);
         
         return nombreNormalizado.includes(queryNormalizado) || 
                descripcionNormalizada.includes(queryNormalizado) ||
@@ -69,14 +69,14 @@ function buscarservicios(query) {
     });
 
     // Mostrar resultados
-    if (serviciosFiltrados.length > 0) {
-        renderizarserviciosFiltrados(serviciosFiltrados);
+    if (productosFiltrados.length > 0) {
+        renderizarproductosFiltrados(productosFiltrados);
         if (noResults) noResults.classList.remove('visible');
         
         // Mostrar cantidad de resultados
         if (searchResults) {
-            const plural = serviciosFiltrados.length === 1 ? 'servicio encontrado' : 'servicios encontrados';
-            searchResults.textContent = `${serviciosFiltrados.length} ${plural}`;
+            const plural = productosFiltrados.length === 1 ? 'servicio encontrado' : 'servicios encontrados';
+            searchResults.textContent = `${productosFiltrados.length} ${plural}`;
         }
     } else {
         // No hay resultados
@@ -86,27 +86,27 @@ function buscarservicios(query) {
     }
 }
 
-// Renderizar servicios filtrados
-function renderizarserviciosFiltrados(serviciosFiltrados) {
+// Renderizar productos filtrados
+function renderizarproductosFiltrados(productosFiltrados) {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
 
-    grid.innerHTML = serviciosFiltrados.map(servicio => `
+    grid.innerHTML = productosFiltrados.map(producto => `
         <article class="product-card">
-            <a href="producto.html?id=${servicio.id}" class="product-link">
-                <img src="${servicio.imagen}" alt="${servicio.nombre}" class="product-image" loading="lazy">
+            <a href="producto.html?id=${producto.id}" class="product-link">
+                <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image" loading="lazy">
                 <div class="product-info">
-                    <h3 class="product-title">${servicio.nombre}</h3>
-                    <p class="product-description">${servicio.descripcion}</p>
-                    <p class="product-price">$${formatearPrecio(servicio.precio)}</p>
+                    <h3 class="product-title">${producto.nombre}</h3>
+                    <p class="product-description">${producto.descripcion}</p>
+                    <p class="product-price">$${formatearPrecio(producto.precio)}</p>
                 </div>
             </a>
             <div class="product-actions">
-                <button class="add-to-cart-btn" onclick="window.location.href='producto.html?id=${servicio.id}'" aria-label="Ver detalles de ${servicio.nombre}">
+                <button class="add-to-cart-btn" onclick="window.location.href='producto.html?id=${producto.id}'" aria-label="Ver detalles de ${producto.nombre}">
                     Ver servicio
                 </button>
                 
-                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${servicio.id})" aria-label="Agregar ${servicio.nombre} al carrito">
+                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${producto.id})" aria-label="Agregar ${producto.nombre} al carrito">
                     Reservar turno
                 </button>
             </div>

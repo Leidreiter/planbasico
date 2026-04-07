@@ -44,9 +44,7 @@ function enviarPedidoWhatsApp(e) {
     mensaje += `*servicios:*\n`;
     cart.forEach((item, index) => {
         mensaje += `${index + 1}. ${item.nombre}\n`;
-        mensaje += `   Cantidad: ${item.quantity}\n`;
         mensaje += `   Precio unitario: ${formatearPrecio(item.precio)}\n`;
-        mensaje += `   Subtotal: ${formatearPrecio(item.precio * item.quantity)}\n\n`;
     });
     
     mensaje += `*TOTAL: ${formatearPrecio(total)}*\n\n`;
