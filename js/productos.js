@@ -144,7 +144,11 @@ function agregarAlCarrito(id) {
 
     localStorage.setItem('cart', JSON.stringify(cart));
     actualizarContadorCarrito();
+<<<<<<< HEAD
     mostrarNotificacion('Producto agregado al carrito');
+=======
+    mostrarNotificacion('Servicio agregado al carrito');
+>>>>>>> a70f8fb (cambios en copy)
 }
 
 // Formatear precio

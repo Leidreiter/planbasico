@@ -47,13 +47,13 @@ function renderizarDetalleproducto(producto) {
     let stockText = '';
     if (producto.stock > 10) {
         stockClass = '';
-        stockText = `En stock (${producto.stock} disponibles)`;
+        stockText = `(${producto.stock} Turnos disponibles)`;
     } else if (producto.stock > 0) {
         stockClass = 'low';
-        stockText = `¡Últimas unidades! (${producto.stock} disponibles)`;
+        stockText = `¡Últimos (${producto.stock} turnos disponibles!)`;
     } else {
         stockClass = 'out';
-        stockText = 'Agotado';
+        stockText = 'Sin turnos';
     }
     
     // Navegación entre productos
@@ -143,7 +143,7 @@ function renderizarDetalleproducto(producto) {
 
                 <div class="product-actions-detail">
                     <button class="btn-add-cart" id="btnAddCart" onclick="agregarAlCarritoDetalle(${producto.id})" ${producto.stock === 0 ? 'disabled' : ''}>
-                        ${producto.stock === 0 ? 'Agotado' : 'Reservar turno'}
+                        ${producto.stock === 0 ? 'Sin turnos' : 'Reservar turno'}
                     </button>
                     <a href="carrito.html" class="btn-go-cart" id="btnGoCart" style="display: none;">
                         Ir al Carrito →
@@ -548,7 +548,7 @@ function agregarAlCarritoDetalle(id) {
 
     localStorage.setItem('cart', JSON.stringify(cart));
     actualizarContadorCarrito();
-    mostrarNotificacion(`${cantidadSeleccionada} ${cantidadSeleccionada === 1 ? 'producto agregado' : 'productos agregados'} al carrito`);
+    mostrarNotificacion(`${cantidadSeleccionada} ${cantidadSeleccionada === 1 ? 'servicio agregado' : 'servicios agregados'} al carrito`);
     
     // Mostrar botón "Ir al Carrito"
     const btnAddCart = document.getElementById('btnAddCart');
