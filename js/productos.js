@@ -1,6 +1,6 @@
 // Base de datos de productos con galería de imágenes
 // Generado automáticamente desde Google Sheets
-// Última actualización: 7/4/2026, 08:23:05
+// Última actualización: 8/4/2026, 01:35:11
 
 const productos = [
     {
@@ -17,7 +17,7 @@ const productos = [
             "https://lh3.googleusercontent.com/d/12lJN6SmKZ6MvzRkWE9F_5nhdTWh1vpZo"
         ],
         categoria: "manicura",
-        stock: NaN,
+        stock: 10,
         caracteristicas: [
             "servicio profesional",
             "atención VIP",
@@ -38,7 +38,7 @@ const productos = [
             "https://lh3.googleusercontent.com/d/1c-RmEWNWPn19juc-TtCyDeXStx_GpMsR"
         ],
         categoria: "manicura",
-        stock: NaN,
+        stock: 10,
         caracteristicas: [
             "servicio profesional",
             "atención VIP",
@@ -59,7 +59,7 @@ const productos = [
             "https://lh3.googleusercontent.com/d/1JSs6NBHWgumXGiwSoWHOYecbmphr02MQ"
         ],
         categoria: "manicura",
-        stock: NaN,
+        stock: 10,
         caracteristicas: [
             "servicio profesional",
             "atención VIP",
@@ -80,7 +80,7 @@ const productos = [
             "https://lh3.googleusercontent.com/d/1W2cxw7TU5Ms6n99fGZ5t74D1hheA-qn3"
         ],
         categoria: "manicura",
-        stock: NaN,
+        stock: 10,
         caracteristicas: [
             "servicio profesional",
             "atención VIP",
