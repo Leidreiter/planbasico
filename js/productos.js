@@ -1,6 +1,6 @@
 // Base de datos de productos con galería de imágenes
 // Generado automáticamente desde Google Sheets
-// Última actualización: 8/4/2026, 01:35:11
+// Última actualización: 8/4/2026, 02:19:44
 
 const productos = [
     {
@@ -144,11 +144,7 @@ function agregarAlCarrito(id) {
 
     localStorage.setItem('cart', JSON.stringify(cart));
     actualizarContadorCarrito();
-<<<<<<< HEAD
     mostrarNotificacion('Producto agregado al carrito');
-=======
-    mostrarNotificacion('Servicio agregado al carrito');
->>>>>>> a70f8fb (cambios en copy)
 }
 
 // Formatear precio
