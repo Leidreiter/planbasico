@@ -28,7 +28,7 @@ function renderizarproductosPorCategoria(categoria, gridId) {
                 <button class="add-to-cart-btn"
                     onclick="window.location.href='producto.html?id=${producto.id}'"
                     aria-label="Ver detalles de ${producto.nombre}">
-                    Ver producto
+                    Ver servicio
                 </button>
 
                 <button class="add-to-cart-btn"
